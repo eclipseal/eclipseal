@@ -8,6 +8,7 @@ export const site = {
   appDomain: "eclipseal.xyz",
   x: "https://x.com/eclipseal_ai",
   handle: "@eclipseal_ai",
+  github: "https://github.com/eclipseal/eclipseal",
   pons: "https://ponsfamily.com/launchpad",
   ponsDocs: "https://docs.ponsfamily.com",
   chain: {

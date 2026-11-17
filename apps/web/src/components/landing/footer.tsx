@@ -83,6 +83,7 @@ export function Footer() {
           <div className="space-y-3">
             <p className="micro text-bone-faint">Social</p>
             <a href={site.x} target="_blank" rel="noreferrer" className="block text-bone/80 hover:text-bone">X</a>
+            <a href={site.github} target="_blank" rel="noreferrer" className="block text-bone/80 hover:text-bone">GitHub</a>
             <a href="#faq" className="block text-bone/80 hover:text-bone">FAQ</a>
           </div>
         </nav>
