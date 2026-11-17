@@ -1,0 +1,24 @@
+[Unit]
+Description=Eclipseal API: workloads, attestation, LLM gateway, GPU jobs, vault (eclipseal.xyz/api)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=eclipseal
+Group=eclipseal
+WorkingDirectory=/var/www/eclipseal/apps/api
+Environment=NODE_ENV=production
+# Settings and secrets in /var/www/eclipseal/apps/api/.env. Loopback only: nginx is the only client.
+ExecStart=/usr/bin/node dist/index.js
+Restart=always
+RestartSec=5
+MemoryMax=512M
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/www/eclipseal/data
+
+[Install]
+WantedBy=multi-user.target

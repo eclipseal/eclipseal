@@ -1,0 +1,21 @@
+{
+  "name": "eclipseal",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Eclipseal: confidential AI compute (agents, private LLMs, GPU jobs in TEEs) on Robinhood Chain.",
+  "scripts": {
+    "setup": "npm install && npm --prefix apps/api install && npm --prefix apps/web install",
+    "dev": "concurrently -k -n api,web -c yellow,cyan \"npm --prefix apps/api run dev\" \"npm --prefix apps/web run dev\"",
+    "build": "npm --prefix apps/api run build && npm --prefix apps/web run build",
+    "start": "concurrently -k -n api,web -c yellow,cyan \"npm --prefix apps/api run start\" \"npm --prefix apps/web run start\"",
+    "lint": "npm --prefix apps/web run lint",
+    "typecheck": "npm --prefix apps/api run typecheck && cd apps/web && npx tsc --noEmit",
+    "smoke": "node apps/api/scripts/smoke.mjs",
+    "brand:render": "npm --prefix brand/render install && npm --prefix brand/render run render",
+    "brand:campaign": "npm --prefix brand/render install && npm --prefix brand/render run render:campaign",
+    "deploy": "deploy/deploy.sh"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.6"
+  }
+}

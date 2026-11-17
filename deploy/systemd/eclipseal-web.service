@@ -1,0 +1,23 @@
+[Unit]
+Description=Eclipseal web, Next.js (eclipseal.xyz)
+After=network-online.target eclipseal-api.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=eclipseal
+Group=eclipseal
+WorkingDirectory=/var/www/eclipseal/apps/web
+Environment=NODE_ENV=production
+ExecStart=/usr/bin/node /var/www/eclipseal/apps/web/node_modules/next/dist/bin/next start --port 3330 --hostname 127.0.0.1
+Restart=always
+RestartSec=5
+MemoryMax=768M
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/www/eclipseal/apps/web/.next
+
+[Install]
+WantedBy=multi-user.target

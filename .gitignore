@@ -1,0 +1,20 @@
+node_modules
+.next
+dist
+.env*
+!.env.example
+apps/api/data
+.DS_Store
+*.log
+*.tsbuildinfo
+.venv
+__pycache__
+
+# Local only: the deploy target and reference images
+deploy/target.env
+/*.jpg
+
+# Internal docs and marketing assets stay out of the public repository; only the logo is published.
+/docs/
+/brand/*
+!/brand/logo/

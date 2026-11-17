@@ -1,0 +1,243 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Eclipseal brand tokens. The brand is dark by design ("proven in the dark"),
+ * so there is one theme. Accent lock: ember. Cobalt lives in the art and as a
+ * secondary data series; signal green is reserved for verified state.
+ */
+:root {
+  color-scheme: dark;
+
+  --ink: #0a0a0b;
+  --ink-2: #111113;
+  --ink-3: #19191c;
+  --ink-4: #222226;
+  --bone: #e8e4da;
+  --bone-dim: #a9a499;
+  --bone-faint: #6f6b63;
+  --ember: #d9732f;
+  --ember-deep: #b85a22;
+  --cobalt: #2f4bd8;
+  --cobalt-soft: #8193f5;
+  --signal: #5fd38d;
+  --danger: #ef5a4f;
+  --line: rgb(232 228 218 / 0.12);
+  --line-strong: rgb(232 228 218 / 0.22);
+
+  --background: var(--ink);
+  --foreground: var(--bone);
+  --card: var(--ink-2);
+  --card-foreground: var(--bone);
+  --popover: var(--ink-2);
+  --popover-foreground: var(--bone);
+  --primary: var(--ember);
+  --primary-foreground: var(--ink);
+  --secondary: var(--ink-3);
+  --secondary-foreground: var(--bone);
+  --muted: var(--ink-3);
+  --muted-foreground: var(--bone-dim);
+  --accent: var(--ink-4);
+  --accent-foreground: var(--bone);
+  --destructive: var(--danger);
+  --border: var(--line);
+  --input: rgb(232 228 218 / 0.16);
+  --ring: var(--ember);
+  --chart-1: var(--ember);
+  --chart-2: var(--cobalt-soft);
+  --chart-3: var(--bone);
+  --chart-4: var(--signal);
+  --chart-5: var(--ember-deep);
+  --radius: 0rem;
+  --sidebar: var(--ink-2);
+  --sidebar-foreground: var(--bone);
+  --sidebar-primary: var(--ember);
+  --sidebar-primary-foreground: var(--ink);
+  --sidebar-accent: var(--ink-3);
+  --sidebar-accent-foreground: var(--bone);
+  --sidebar-border: var(--line);
+  --sidebar-ring: var(--ember);
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+  --font-heading: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-ink-4: var(--ink-4);
+  --color-bone: var(--bone);
+  --color-bone-dim: var(--bone-dim);
+  --color-bone-faint: var(--bone-faint);
+  --color-ember: var(--ember);
+  --color-ember-deep: var(--ember-deep);
+  --color-cobalt: var(--cobalt);
+  --color-cobalt-soft: var(--cobalt-soft);
+  --color-signal: var(--signal);
+  --color-danger: var(--danger);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --radius-sm: 0rem;
+  --radius-md: 0rem;
+  --radius-lg: 0rem;
+  --radius-xl: 0rem;
+  --radius-2xl: 0rem;
+
+  --animate-marquee: marquee var(--marquee-duration, 48s) linear infinite;
+  --animate-grain: grain 0.9s steps(5) infinite;
+  --animate-blink: blink 1.1s steps(2, start) infinite;
+}
+
+@keyframes marquee {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+
+@keyframes grain {
+  0% { transform: translate(0, 0); }
+  20% { transform: translate(-3%, 2%); }
+  40% { transform: translate(2%, -3%); }
+  60% { transform: translate(-1%, 3%); }
+  80% { transform: translate(3%, 1%); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes blink {
+  to { visibility: hidden; }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply bg-ink;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-background font-sans text-foreground;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: var(--ember);
+    color: var(--ink);
+  }
+  :focus-visible {
+    outline: 1px solid var(--ember);
+    outline-offset: 2px;
+  }
+}
+
+/* Extended black display cut of Archivo, used for poster type. */
+@utility type-display {
+  font-family: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  font-stretch: 125%;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 0.86;
+}
+
+@utility type-wide {
+  font-family: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  font-stretch: 118%;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+/* Photocopy speckle knocked out of large type, like the poster print. */
+@utility ink-distress {
+  background-image: url("/textures/specks.png"), linear-gradient(var(--bone), var(--bone));
+  background-size: 260px 260px, 100% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility micro {
+  font-family: var(--font-jetbrains), ui-monospace, monospace;
+  font-size: 10px;
+  line-height: 1.4;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* HUD chamfer: cuts the top-left and bottom-right corners. */
+@utility chamfer {
+  clip-path: polygon(
+    var(--cut, 12px) 0,
+    100% 0,
+    100% calc(100% - var(--cut, 12px)),
+    calc(100% - var(--cut, 12px)) 100%,
+    0 100%,
+    0 var(--cut, 12px)
+  );
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-grain {
+    animation: none !important;
+  }
+}
